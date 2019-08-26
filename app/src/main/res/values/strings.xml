@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Assignment1</string>
+    <string name="about_dogs">About Dogs</string>
+    <string name="i_am_husky">Husky</string>
+    <string name="i_am_golden_retriever">Golden Retriever</string>
+    <string name="i_am_labrador">Labrador</string>
+    <string name="i_am_german_shepred">German Shephred</string>
+</resources>
