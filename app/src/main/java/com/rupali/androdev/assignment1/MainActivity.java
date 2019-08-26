@@ -2,10 +2,8 @@ package com.rupali.androdev.assignment1;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.view.View;
 import android.widget.Toast;
@@ -16,18 +14,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState != null) {
-            rotate_count = savedInstanceState.getInt(Rotate_Score);
+    if (savedInstanceState != null) {
+        rotate_count=rotate_count+1;
+        rotate_count = savedInstanceState.getInt(Rotate_Score);
         }
-        else {
-            rotate_count = 0;
-        }
+
         Context context = getApplicationContext();
-        CharSequence text = "Screen rotated "+rotate_count+" times";
+        CharSequence text = "Screen rotated "+rotate_count+"times";
         Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
         toast.show();
 
-        ImageView icon_1 = findViewById(R.id.img1);
+        ImageView icon_1 =(ImageView) findViewById(R.id.img1);
         icon_1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Context context = getApplicationContext();
@@ -74,24 +71,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-  @Override
-   public void onConfigurationChanged(Configuration newConfig)
-   {
-       super.onConfigurationChanged(newConfig);
-       int orientation = newConfig.orientation;
-       if (orientation == Configuration.ORIENTATION_PORTRAIT)
-       {   rotate_count++;
-           Log.d("tag", "Portrait");}
-       else if (orientation == Configuration.ORIENTATION_LANDSCAPE)
-       { rotate_count++;
-           Log.d("tag", "Landscape");}
-       else
-           Log.w("tag", "other: " + orientation);
-   }
-   @Override
+    @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt(Rotate_Score, rotate_count);
-        Log.d("Saved", "Inside onSaveInstance: "+ rotate_count);
         super.onSaveInstanceState(savedInstanceState);
     }
   }
